@@ -2,6 +2,7 @@ import { useAuth } from "hooks/auth";
 import { LOGIN } from "lib/routes";
 import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 export default function Layout() {
   const { pathname } = useLocation();
@@ -12,14 +13,15 @@ export default function Layout() {
     if (pathname.startsWith("/protected") && !user) {
       navigate(LOGIN);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, user]);
 
   if (isLoading) return "Loading user profile...";
 
   return (
     <>
-      This is the child: <Outlet />
+      <Navbar />
+      <Outlet />
     </>
   );
 }
