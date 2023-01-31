@@ -10,11 +10,11 @@ export default function Layout() {
   const { user, isLoading } = useAuth();
 
   useEffect(() => {
-    if (pathname.startsWith("/protected") && !user) {
+    if (!isLoading && pathname.startsWith("/protected") && !user) {
       navigate(LOGIN);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname, user]);
+  }, [pathname, user, isLoading]);
 
   if (isLoading) return "Loading user profile...";
 
