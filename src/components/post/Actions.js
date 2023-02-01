@@ -6,10 +6,12 @@ import { FaCommentDots, FaRegCommentDots, FaTrashAlt } from "react-icons/fa";
 import { useToggleLike, useDeletePost } from "hooks/posts";
 import { Link } from "react-router-dom";
 import { PROTECTED } from "lib/routes";
+import { useComments } from "hooks/comments";
 
 export default function Actions({ post }) {
   const { id, likes } = post;
   const { user, isLoading: userLoading } = useAuth();
+
   const isLiked = likes.includes(user?.id);
   const { toggleLike, isLoading: likeLoading } = useToggleLike({
     id,
@@ -17,7 +19,9 @@ export default function Actions({ post }) {
     uid: user?.id,
   });
 
-  const {deletePost, isLoading: deleteLoading} = useDeletePost(id);
+  const { deletePost, isLoading: deleteLoading } = useDeletePost(id);
+
+  const { comments, isLoading: commentsLoading } = useComments(id);
 
   return (
     <Flex p="2">
@@ -39,12 +43,14 @@ export default function Actions({ post }) {
           // isLoading={likeLoading || userLoading}
           colorScheme="green"
           variant="ghost"
-          icon={<FaRegCommentDots />}
+          icon={
+            comments?.length === 0 ? <FaRegCommentDots /> : <FaCommentDots />
+          }
           isRound
           as={Link}
           to={`${PROTECTED}/comments/${id}`}
         />
-        5
+        {comments?.length}
       </Flex>
       <IconButton
         ml="auto"
