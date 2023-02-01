@@ -41,16 +41,6 @@ export default function Sidebar() {
       <ActiveUser />
       <Box align="center">
         <Box as="ul" borderBottom="2px solid" borderColor="green.200" />
-        <Button
-          variant="outline"
-          colorScheme="green"
-          as={Link}
-          to={USERS}
-          mt="4"
-          size="sm"
-        >
-          ALL USERS
-        </Button>
       </Box>
     </Box>
   );
