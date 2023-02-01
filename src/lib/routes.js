@@ -4,6 +4,7 @@ import Login from "components/auth/Login";
 import Register from "components/auth/Register";
 import Layout from "components/layout";
 import Dashboard from "components/dashboard";
+import Comments from "components/comments";
 
 export const ROOT = "/";
 export const LOGIN = "/login";
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: PROFILE,
         element: "profile for a specific user",
+      },
+      {
+        path: COMMENTS,
+        element: <Comments />,
       },
     ],
   },
