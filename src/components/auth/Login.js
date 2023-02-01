@@ -40,6 +40,9 @@ export default function Login() {
   return (
     <Center w="100%" h="100vh">
       <Box mx="1" maxW="md" p="9" borderWidth="1px" borderRadius="lg">
+      <Text textAlign="center" color="green" fontWeight="extrabold">
+          Welcome to Chirper!
+        </Text>
         <Heading mb="4" size="lg" textAlign="center">
           Log In
         </Heading>
